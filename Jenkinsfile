@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    parameters {
+        choice(name: 'ENVIRONMENT', choices: ['dev', 'prod'], description: 'Select environment')
+        string(name: 'VERSION', defaultValue: '1.0.0', description: 'Application version')
+    }
 
     stages {
         stage('Checkout') {
